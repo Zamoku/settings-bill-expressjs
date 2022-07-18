@@ -15,8 +15,7 @@ module.exports = function BillWithSettings() {
         criticalLevel = settings.criticalLevel;
     }
 
-    function getSettings
-        () {
+    function getSettings() {
         return {
             smsCost,
             callCost,
