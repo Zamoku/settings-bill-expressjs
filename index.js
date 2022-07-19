@@ -2,6 +2,10 @@ const express = require('express');
 const exphbs  = require('express-handlebars');
 const bodyParser = require('body-parser');
 const BillWithSettings = require('./settings-bill')
+const moment = require('moment');
+
+moment().format()
+
 
 const app = express();
 const settingsBill = BillWithSettings(); 
@@ -40,7 +44,6 @@ app.post('/settings', function(req, res){
 
 app.post('/action', function(req, res){
     //capture the call type to add
-    console.log()
     settingsBill.recordAction(req.body.actionType)
 
     res.redirect('/')
@@ -48,6 +51,7 @@ app.post('/action', function(req, res){
 
 app.get('/actions', function(req, res){
     res.render('actions', {actions: settingsBill.actions() })
+
 
 });
 

@@ -1,3 +1,4 @@
+const moment = require('moment');
 
 module.exports = function BillWithSettings() {
 
@@ -33,7 +34,7 @@ module.exports = function BillWithSettings() {
                 actionList.push({
                     type: action,
                     cost,
-                    timestamp: new Date()
+                    timestamp: moment().startOf('minute').fromNow()
                 });
             }
             else if (action === 'call') {
@@ -41,7 +42,7 @@ module.exports = function BillWithSettings() {
                 actionList.push({
                     type: action,
                     cost,
-                    timestamp: new Date()
+                    timestamp: moment().startOf('minute').fromNow()
                 });
             }
         }
@@ -88,12 +89,12 @@ module.exports = function BillWithSettings() {
     }
 
     function totals() {
-        let smsTotal = getTotal('sms').toFixed(2)
-        let callTotal = getTotal('call').toFixed(2)
+        let smsTotal = getTotal('sms')
+        let callTotal = getTotal('call')
         return {
             smsTotal,
             callTotal,
-            grandTotal: grandTotal().toFixed(2)
+            grandTotal: grandTotal()
         }
     }
 
