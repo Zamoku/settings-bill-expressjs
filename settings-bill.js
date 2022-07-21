@@ -34,15 +34,17 @@ module.exports = function BillWithSettings() {
                 actionList.push({
                     type: action,
                     cost,
-                    timestamp: moment().startOf('minute').fromNow()
-                });
-            }
+                    timestamp:  new Date(),
+                    time: ''
+                })
+                }
             else if (action === 'call') {
                 cost = callCost;
                 actionList.push({
                     type: action,
                     cost,
-                    timestamp: moment().startOf('minute').fromNow()
+                    timestamp: new Date(),
+                    time : ''
                 });
             }
         }

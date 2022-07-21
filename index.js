@@ -50,7 +50,13 @@ app.post('/action', function(req, res){
 });
 
 app.get('/actions', function(req, res){
-    res.render('actions', {actions: settingsBill.actions() })
+    res.render('actions', {actions: settingsBill.actions() 
+    
+    })
+     for (let actionList of settingsBill.actions()) {
+        console.log(actionList.time)
+        actionList.time = moment(actionList.timestamp,'MMMM Do YYYY, h:mm:ss a').fromNow()
+     }
 
 
 });
